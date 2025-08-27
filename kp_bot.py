@@ -56,6 +56,14 @@ async def kp(ctx):
     except Exception as e:
         await ctx.send(f"Error fetching KP: {e}")
 
+@bot.command()
+async def clear(ctx):
+    """Clear all KP thresholds"""
+    global upper_threshold, lower_threshold
+    upper_threshold = None
+    lower_threshold = None
+    await ctx.send("✅ All thresholds have been cleared.")
+
 # ---- Background task ----
 @tasks.loop(minutes=1)
 async def check_kp():
