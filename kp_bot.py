@@ -21,9 +21,10 @@ def get_usdkrw():
     return data['chart']['result'][0]['meta']['regularMarketPrice']
 
 def get_usdtkrw():
-    url = "https://api.bithumb.com/public/ticker/USDT_KRW"
+    url = "https://api.upbit.com/v1/ticker?markets=KRW-USDT"
     resp = requests.get(url).json()
-    return float(resp['data']['closing_price'])
+    # Upbit returns a list with one object; 'trade_price' is the KRW per USDT
+    return float(resp[0]['trade_price'])
 
 def get_kp():
     usdkrw = get_usdkrw()
