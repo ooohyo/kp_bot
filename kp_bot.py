@@ -75,9 +75,9 @@ async def check_kp():
         channel = bot.get_channel(CHANNEL_ID)
 
         if upper_threshold is not None and kp_value*100 >= upper_threshold:
-            await channel.send(f"🚨 KP is above upper threshold ({upper_threshold:.2f}%):\n{msg}")
+            await channel.send(f"@everyone 🚨 KP is above upper threshold ({upper_threshold:.2f}%):\n{msg}")
         if lower_threshold is not None and kp_value*100 <= lower_threshold:
-            await channel.send(f"🚨 KP is below lower threshold ({lower_threshold:.2f}%):\n{msg}")
+            await channel.send(f"@everyone 🚨 KP is below lower threshold ({lower_threshold:.2f}%):\n{msg}")
     except Exception as e:
         print("Error in check_kp:", e)
 
